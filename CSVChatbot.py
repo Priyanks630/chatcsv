@@ -1,6 +1,5 @@
 import streamlit as st 
 from pandasai.llm.openai import OpenAI
-import os
 import pandas as pd
 import re
 from pandasai import PandasAI
@@ -11,7 +10,7 @@ OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
 
 
 
-openai_api_key = os.getenv("OPENAI_API_KEY")
+
 
 
 def preprocess_text(text):
@@ -44,7 +43,7 @@ uploaded_file = st.file_uploader("Upload a CSV file for analysis", type=['csv'])
 
 
 # create an LLM by instantiating OpenAI object, and passing API token
-llm = OpenAI(api_token=openai_api_key)
+llm = OpenAI(api_token=OPENAI_API_KEY)
 
 # create PandasAI object, passing the LLM
 pandas_ai = PandasAI(llm)
